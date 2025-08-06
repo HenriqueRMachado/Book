@@ -26,6 +26,7 @@
       font: bold;
     }
     p {
+        
       margin-left: var(--margin);
       margin-right: var(--margin);
     }
@@ -85,6 +86,8 @@
       box-shadow: var(--shadow);
       transform-origin: left;
       animation: abrirCapa 2s ease-in-out forwards; 
+
+      transform-style: preserve-3d;
     }
 
     .pagina {
@@ -94,7 +97,14 @@
       height: 300px;
       word-wrap: break-word;
 
+      transform-style: preserve-3d;
     }
+
+    .pagina p{
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
     #fundo {
       z-index: -1;
       position: absolute;
@@ -145,26 +155,6 @@
       }
     }
 
-    @keyframes apagaTEXTO {
-      0% {
-        color: black;
-      }
-      100% {
-        color: transparent;
-        user-select: none;
-      }
-    }
-
-    @keyframes mostraTEXTO {
-      from {
-        color: transparent;
-        user-select: none;
-      }
-      to {
-        user-select: auto;
-        color: black;
-      }
-    }
 
     .animarPOS {
       transform-origin: left;
@@ -190,14 +180,6 @@
     
     .animarTRANS {
       animation: trans 1s 1s ease-in-out forwards;
-    }
-
-    .apagaTEXTO {
-      animation: apagaTEXTO 1.5s forwards;
-    }
-
-    .mostraTEXTO {
-      animation: mostraTEXTO 1s forwards;
     }
 
 
@@ -227,9 +209,7 @@
 
 
 
-
    #pag1 {
-    text-wrap: wrap;
     z-index: 3;
    }
    #pag2 {
@@ -326,8 +306,6 @@
       animation: reset 5s ease forwards;
    }
 
-
-
    @media (max-width: 480px) {
     h3 {
       color: red;
@@ -345,7 +323,7 @@
           </div>
 
           <div class="pagina" id="pag1">
-            <p id="txt1">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+            <p id="txt1">aaaaaaaaaaaaaaaaaaaaaaaaaa</p>
           </div>
 
           <div class="pagina" id="pag2">
@@ -419,9 +397,6 @@ function anterior() {
 function changeNEG() {
   switch (paginas) {
     case 0:
-      const txt1 = document.getElementById('txt1');
-      txt1.classList.remove('apagaTEXTO');
-      txt1.classList.add('mostraTEXTO');
 
       const pg1 = document.getElementById('pag1');
       pg1.classList.remove('animarPOS');
@@ -434,9 +409,6 @@ function changeNEG() {
       break;
 
     case 1:
-      const txt2 = document.getElementById('txt2');
-      txt2.classList.remove('apagaTEXTO');
-      txt2.classList.add('mostraTEXTO');
 
       const pg2 = document.getElementById('pag2');
       pg2.classList.remove('animarPOS');
@@ -449,9 +421,6 @@ function changeNEG() {
       break;
 
     case 2:
-      const txt3 = document.getElementById('txt3');
-      txt3.classList.remove('apagaTEXTO');
-      txt3.classList.add('mostraTEXTO');
 
       const pg3 = document.getElementById('pag3');
       pg3.classList.remove('animarPOS');
@@ -485,9 +454,6 @@ function proxima() {
 function changePOS() {
   switch (paginas) {
     case 1:
-      const txt1 = document.getElementById('txt1');
-      txt1.classList.remove('mostraTEXTO');
-      txt1.classList.add('apagaTEXTO');
 
       const pg1 = document.getElementById('pag1');
       pg1.classList.remove('animarNEG');
@@ -500,9 +466,6 @@ function changePOS() {
       break;
 
     case 2:
-      const txt2 = document.getElementById('txt2');
-      txt2.classList.remove('mostraTEXTO');
-      txt2.classList.add('apagaTEXTO');
 
       const pg2 = document.getElementById('pag2');
       pg2.classList.remove('animarNEG');
@@ -515,9 +478,6 @@ function changePOS() {
       break;
 
     case 3:
-      const txt3 = document.getElementById('txt3');
-      txt3.classList.remove('mostraTEXTO');
-      txt3.classList.add('apagaTEXTO');
 
       const pg3 = document.getElementById('pag3');
       pg3.classList.remove('animarNEG');
